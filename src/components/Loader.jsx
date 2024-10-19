@@ -82,7 +82,7 @@ export default function Loader({ showEnding, setShowEnding, isDoneIntro }) {
                       900,
                       "THẬT TUYỆT 😊",
                       1000,
-                      "MỘT MÓN QUÀ NHỎ TỪ FIT 💐",
+                      "MỘT MÓN QUÀ NHỎ TỪ CÁC CHÀNG TRAI HDSC 💐",
                     ]}
                   />
                 </span>

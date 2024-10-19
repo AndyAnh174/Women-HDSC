@@ -14,9 +14,10 @@ const Intro = ({ setShowThankyou }) => {
                 20/10
               </h1>
             </div>
-            <p className="py-6 font-bold  text-6xl text-gray-600 ">
-              Vietnamese <span className="text-pink-400">Women's</span> Day
-            </p>
+            <p className="py-6 font-bold text-6xl text-gray-600">
+  Vietnamese <span className="text-pink-400">Woman&apos;s</span> Day
+</p>
+
             <button
               onClick={() => {
                 scrollIntoView("hero-section");
