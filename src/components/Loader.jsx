@@ -5,26 +5,27 @@ import { TypeAnimation } from "react-type-animation";
 
 export default function Loader({ showEnding, setShowEnding, isDoneIntro }) {
   const [countdown, setCountdown] = useState(5);
-
   const [deadlock, setDeadlock] = useState(true);
 
   useEffect(() => {
     if (deadlock) return;
     const interval = setInterval(() => {
-      if (countdown === 0) {
-        setShowEnding(true);
-        // Set playing MUSIC!!!
-        let audio = document.getElementById("background-music");
-
-        audio.play();
-        return clearInterval(interval);
-      } else {
-        setCountdown(countdown - 1);
-      }
-      // Set background to random color
+      setCountdown((prevCountdown) => {
+        if (prevCountdown === 0) {
+          setShowEnding(true);
+          // Set playing MUSIC!!!
+          let audio = document.getElementById("background-music");
+          audio.play();
+          clearInterval(interval);
+          return prevCountdown;
+        } else {
+          return prevCountdown - 1;
+        }
+      });
     }, 1000);
+
     return () => clearInterval(interval);
-  }, [countdown, deadlock]);
+  }, [deadlock, setShowEnding]);
 
   const colors = [
     "bg-pink-400",
@@ -65,9 +66,7 @@ export default function Loader({ showEnding, setShowEnding, isDoneIntro }) {
 
         <div
           className={`grid grid-flow-col transition-all ease-in-out duration-150 gap-5 text-center auto-cols-max  ${
-            isDoneIntro && "hidden"
-          }`}
-        >
+            isDoneIntro && "hidden" }`}>
           <div className="flex flex-col p-2 rounded-box">
             {showEnding ? (
               <div className="absolute top-0 bottom-0 left-0 bg-pink-400  right-0 z-[9999] flex items-center justify-center">
